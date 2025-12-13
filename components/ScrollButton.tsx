@@ -61,7 +61,8 @@ export default function ScrollButton() {
   return (
     <motion.button
       onClick={scrollToNext}
-      className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex flex-col items-center gap-1 text-[#D4AF37] hover:text-[#E8C547] transition-colors pointer-events-auto cursor-pointer bg-transparent border-none outline-none focus:outline-none"
+      className="fixed bottom-8 left-1/2 z-[100] flex flex-col items-center justify-center gap-1 text-[#D4AF37] hover:text-[#E8C547] transition-colors pointer-events-auto cursor-pointer bg-transparent border-none outline-none focus:outline-none"
+      style={{ transform: 'translateX(-50%)' }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       type="button"
