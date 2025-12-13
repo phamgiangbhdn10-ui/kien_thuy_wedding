@@ -24,6 +24,14 @@ export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null)
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
 
+  // Preload gallery images in the background
+  useEffect(() => {
+    galleryImages.forEach((image) => {
+      const img = new window.Image()
+      img.src = image.src
+    })
+  }, [])
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.gallery-title',

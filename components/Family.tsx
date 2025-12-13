@@ -303,21 +303,21 @@ export default function Family() {
                 </h3>
                 
                 <div className="space-y-0.5 md:space-y-1 mb-2 md:mb-6">
-                  <p className="font-montserrat text-[10px] md:text-base text-navy/70 leading-tight">
+                  <p className="font-montserrat text-xs md:text-base text-navy/70 leading-tight">
                     Ông: <span className="font-medium text-navy">Ngô Đăng Chính</span>
                   </p>
-                  <p className="font-montserrat text-[10px] md:text-base text-navy/70 leading-tight">
+                  <p className="font-montserrat text-xs md:text-base text-navy/70 leading-tight">
                     Bà: <span className="font-medium text-navy">Bùi Thị Hà</span>
                   </p>
                 </div>
 
-                <p className="font-montserrat text-[9px] md:text-sm text-navy/50 mb-2 md:mb-8 leading-tight">
+                <p className="font-montserrat text-[9px] md:text-sm text-navy/50 mb-4 md:mb-8 leading-tight">
                   Ấp 6 - Đông Tân<br className="md:hidden" /> T. Đồng Nai
                 </p>
 
                 {/* Avatar - Above name */}
                 <motion.div
-                  className="relative mb-2 md:mb-6"
+                  className="relative mb-4 md:mb-6"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -435,21 +435,21 @@ export default function Family() {
                 </h3>
                 
                 <div className="space-y-0.5 md:space-y-1 mb-2 md:mb-6">
-                  <p className="font-montserrat text-[10px] md:text-base text-navy/70 leading-tight">
+                  <p className="font-montserrat text-xs md:text-base text-navy/70 leading-tight">
                     Ông: <span className="font-medium text-navy">Phạm Thanh Tâm</span>
                   </p>
-                  <p className="font-montserrat text-[10px] md:text-base text-navy/70 invisible">
+                  <p className="font-montserrat text-xs md:text-base text-navy/70 invisible">
                     &nbsp;
                   </p>
                 </div>
 
-                <p className="font-montserrat text-[9px] md:text-sm text-navy/50 mb-2 md:mb-8 leading-tight">
+                <p className="font-montserrat text-[9px] md:text-sm text-navy/50 mb-4 md:mb-8 leading-tight">
                   Thôn 1 - Nghĩa Trung<br className="md:hidden" /> T. Đồng Nai
                 </p>
 
                 {/* Avatar - Above name */}
                 <motion.div
-                  className="relative mb-2 md:mb-6"
+                  className="relative mb-4 md:mb-6"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
