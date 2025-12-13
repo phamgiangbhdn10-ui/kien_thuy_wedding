@@ -59,17 +59,17 @@ export default function ScrollButton() {
   if (!isVisible) return null
 
   return (
-    <motion.button
-      onClick={scrollToNext}
-      className="fixed bottom-8 left-1/2 z-[100] flex flex-col items-center justify-center gap-1 text-[#D4AF37] hover:text-[#E8C547] transition-colors pointer-events-auto cursor-pointer bg-transparent border-none outline-none focus:outline-none"
-      style={{ transform: 'translateX(-50%)' }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-      type="button"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 }}
-    >
+    <div className="fixed bottom-8 left-0 right-0 z-[100] flex justify-center items-center pointer-events-none">
+      <motion.button
+        onClick={scrollToNext}
+        className="flex flex-col items-center justify-center gap-1 text-[#D4AF37] hover:text-[#E8C547] transition-colors pointer-events-auto cursor-pointer bg-transparent border-none outline-none focus:outline-none"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        type="button"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
       {/* Mouse icon with scroll indicator */}
       <motion.div
         className="flex flex-col items-center gap-2"
@@ -101,6 +101,7 @@ export default function ScrollButton() {
         </motion.span>
       </motion.div>
     </motion.button>
+    </div>
   )
 }
 
