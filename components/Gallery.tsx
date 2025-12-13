@@ -116,17 +116,14 @@ export default function Gallery() {
                 initial={{ opacity: 0, y: 50, rotateX: -15 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: 0.1 }}
                 animate={{ 
                   y: [0, -10, 0],
                   rotateY: [0, 2, 0]
                 }}
                 transition={{
-                  y: {
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  },
+                  opacity: { duration: 0.6, delay: 0.1 },
+                  y: { duration: 0.6, delay: 0.1 },
+                  rotateX: { duration: 0.6, delay: 0.1 },
                   rotateY: {
                     duration: 6,
                     repeat: Infinity,

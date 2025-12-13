@@ -1,100 +1,16 @@
 'use client'
 
-import { useCallback } from 'react'
-import Particles from '@tsparticles/react'
-import { loadSlim } from '@tsparticles/slim'
-import type { Engine } from '@tsparticles/engine'
-
 export default function ParticlesBackground() {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine)
-  }, [])
-
+  // Simplified particles background - can be enhanced later
   return (
-    <Particles
-      id="tsparticles"
-      init={particlesInit}
-      className="absolute inset-0 z-0"
-      options={{
-        background: {
-          color: {
-            value: 'transparent',
-          },
-        },
-        fpsLimit: 120,
-        interactivity: {
-          events: {
-            onClick: {
-              enable: true,
-              mode: 'push',
-            },
-            onHover: {
-              enable: true,
-              mode: 'repulse',
-            },
-            resize: true,
-          },
-          modes: {
-            push: {
-              quantity: 4,
-            },
-            repulse: {
-              distance: 100,
-              duration: 0.4,
-            },
-          },
-        },
-        particles: {
-          color: {
-            value: '#D4AF37',
-          },
-          links: {
-            color: '#D4AF37',
-            distance: 150,
-            enable: true,
-            opacity: 0.2,
-            width: 1,
-          },
-          move: {
-            direction: 'none',
-            enable: true,
-            outModes: {
-              default: 'bounce',
-            },
-            random: true,
-            speed: 0.5,
-            straight: false,
-            attract: {
-              enable: true,
-              rotateX: 600,
-              rotateY: 1200
-            }
-          },
-          number: {
-            density: {
-              enable: true,
-              area: 800,
-            },
-            value: 80,
-          },
-          opacity: {
-            value: { min: 0.2, max: 0.5 },
-            animation: {
-              enable: true,
-              speed: 1,
-              sync: false
-            }
-          },
-          shape: {
-            type: 'circle',
-          },
-          size: {
-            value: { min: 1, max: 3 },
-          },
-        },
-        detectRetina: true,
-      }}
-    />
+    <div className="absolute inset-0 z-0 pointer-events-none">
+      {/* Simple animated background effect */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" style={{ animationDelay: '0s' }} />
+        <div className="absolute top-1/3 right-1/4 w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 left-1/3 w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-1/3 right-1/3 w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" style={{ animationDelay: '0.5s' }} />
+      </div>
+    </div>
   )
 }
-
