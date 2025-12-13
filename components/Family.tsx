@@ -544,22 +544,12 @@ export default function Family() {
                       />
                     </div>
                     
-                    {/* Subtle inner glow with continuous pulse */}
-                    <motion.div
+                    {/* Subtle inner glow - static */}
+                    <div
                       className="absolute -inset-0.5 rounded-full border border-[#D4AF37]/20"
-                      style={{ borderRadius: '50%' }}
-                      animate={{
-                        boxShadow: [
-                          '0 0 10px rgba(212, 175, 55, 0.3)',
-                          '0 0 30px rgba(212, 175, 55, 0.6), 0 0 50px rgba(212, 175, 55, 0.4)',
-                          '0 0 10px rgba(212, 175, 55, 0.3)'
-                        ]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                        delay: 0.5
+                      style={{ 
+                        borderRadius: '50%',
+                        boxShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
                       }}
                     />
                   </motion.div>

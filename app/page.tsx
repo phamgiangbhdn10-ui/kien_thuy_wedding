@@ -15,6 +15,7 @@ import ParticlesBackground from '@/components/ParticlesBackground'
 import FloatingDecorations from '@/components/FloatingDecorations'
 import Sparkles from '@/components/Sparkles'
 import MusicPlayer from '@/components/MusicPlayer'
+import ScrollButton from '@/components/ScrollButton'
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true)
@@ -100,7 +101,9 @@ export default function Home() {
           <Announcement />
         </section>
 
-        <Countdown />
+        <section id="countdown">
+          <Countdown />
+        </section>
 
         <section id="details">
           <Details />
@@ -110,7 +113,9 @@ export default function Home() {
           <Family />
         </section>
 
-        <Quotes />
+        <section id="quotes">
+          <Quotes />
+        </section>
 
         <section id="gallery">
           <Gallery />
@@ -125,6 +130,9 @@ export default function Home() {
 
       {/* Music Player */}
       <MusicPlayer />
+
+      {/* Scroll Button */}
+      {!showIntro && <ScrollButton />}
     </main>
   )
 }
