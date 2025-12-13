@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
@@ -107,7 +108,28 @@ export default function Gallery() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {/* Column 1 */}
             <div className="flex flex-col gap-4">
-              <div 
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                animate={{ 
+                  y: [0, -10, 0],
+                  rotateY: [0, 2, 0]
+                }}
+                transition={{
+                  y: {
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  },
+                  rotateY: {
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }
+                }}
+                style={{ perspective: '1000px' }}
                 className="relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer group"
                 onClick={() => openLightbox(0)}
               >
@@ -116,132 +138,275 @@ export default function Gallery() {
                   alt={galleryImages[0].alt}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
-              <div 
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={{ y: 10 }}
+                  whileHover={{ y: 0 }}
+                >
+                  <p className="font-montserrat text-sm font-medium">Xem chi tiết</p>
+                </motion.div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                whileHover={{ scale: 1.05, rotateY: -5, z: 50 }}
                 className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group"
                 onClick={() => openLightbox(1)}
+                style={{ perspective: '1000px' }}
               >
                 <Image
                   src={galleryImages[1].src}
                   alt={galleryImages[1].alt}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={{ y: 10 }}
+                  whileHover={{ y: 0 }}
+                >
+                  <p className="font-montserrat text-sm font-medium">Xem chi tiết</p>
+                </motion.div>
+              </motion.div>
             </div>
 
             {/* Column 2 */}
             <div className="flex flex-col gap-4">
-              <div 
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: 15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                whileHover={{ scale: 1.05, rotateY: 5, z: 50 }}
                 className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group"
                 onClick={() => openLightbox(2)}
+                style={{ perspective: '1000px' }}
               >
                 <Image
                   src={galleryImages[2].src}
                   alt={galleryImages[2].alt}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
-              <div 
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={{ y: 10 }}
+                  whileHover={{ y: 0 }}
+                >
+                  <p className="font-montserrat text-sm font-medium">Xem chi tiết</p>
+                </motion.div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                whileHover={{ scale: 1.05, rotateY: -5, z: 50 }}
                 className="relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer group"
                 onClick={() => openLightbox(3)}
+                style={{ perspective: '1000px' }}
               >
                 <Image
                   src={galleryImages[3].src}
                   alt={galleryImages[3].alt}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={{ y: 10 }}
+                  whileHover={{ y: 0 }}
+                >
+                  <p className="font-montserrat text-sm font-medium">Xem chi tiết</p>
+                </motion.div>
+              </motion.div>
             </div>
 
             {/* Column 3 */}
             <div className="flex flex-col gap-4">
-              <div 
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                whileHover={{ scale: 1.05, rotateY: 5, z: 50 }}
                 className="relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer group"
                 onClick={() => openLightbox(4)}
+                style={{ perspective: '1000px' }}
               >
                 <Image
                   src={galleryImages[4].src}
                   alt={galleryImages[4].alt}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
-              <div 
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={{ y: 10 }}
+                  whileHover={{ y: 0 }}
+                >
+                  <p className="font-montserrat text-sm font-medium">Xem chi tiết</p>
+                </motion.div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: 15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                whileHover={{ scale: 1.05, rotateY: -5, z: 50 }}
                 className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group"
                 onClick={() => openLightbox(5)}
+                style={{ perspective: '1000px' }}
               >
                 <Image
                   src={galleryImages[5].src}
                   alt={galleryImages[5].alt}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={{ y: 10 }}
+                  whileHover={{ y: 0 }}
+                >
+                  <p className="font-montserrat text-sm font-medium">Xem chi tiết</p>
+                </motion.div>
+              </motion.div>
             </div>
 
             {/* Column 4 */}
             <div className="flex flex-col gap-4">
-              <div 
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: 15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                whileHover={{ scale: 1.05, rotateY: 5, z: 50 }}
                 className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group"
                 onClick={() => openLightbox(6)}
+                style={{ perspective: '1000px' }}
               >
                 <Image
                   src={galleryImages[6].src}
                   alt={galleryImages[6].alt}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
-              <div 
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={{ y: 10 }}
+                  whileHover={{ y: 0 }}
+                >
+                  <p className="font-montserrat text-sm font-medium">Xem chi tiết</p>
+                </motion.div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                whileHover={{ scale: 1.05, rotateY: -5, z: 50 }}
                 className="relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer group"
                 onClick={() => openLightbox(7)}
+                style={{ perspective: '1000px' }}
               >
                 <Image
                   src={galleryImages[7].src}
                   alt={galleryImages[7].alt}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={{ y: 10 }}
+                  whileHover={{ y: 0 }}
+                >
+                  <p className="font-montserrat text-sm font-medium">Xem chi tiết</p>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Lightbox Slider */}
-      {selectedImageIndex !== null && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
-          onClick={closeLightbox}
-        >
+      <AnimatePresence>
+        {selectedImageIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+            onClick={closeLightbox}
+          >
           {/* Close Button */}
           <button
             className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
@@ -286,7 +451,14 @@ export default function Gallery() {
           </div>
           
           {/* Image */}
-          <div className="relative max-w-5xl max-h-[90vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="relative max-w-5xl max-h-[90vh] w-full h-full"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Image
               src={galleryImages[selectedImageIndex].src}
               alt={galleryImages[selectedImageIndex].alt}
@@ -295,9 +467,10 @@ export default function Gallery() {
               sizes="100vw"
               priority
             />
-          </div>
-        </div>
-      )}
+          </motion.div>
+        </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

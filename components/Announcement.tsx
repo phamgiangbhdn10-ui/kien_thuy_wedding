@@ -104,10 +104,13 @@ export default function Announcement() {
               Trung Kiên
             </p>
             
-            {/* & symbol - stylized */}
+            {/* & symbol - stylized with floating animation */}
             <p 
-              className="font-script text-6xl md:text-7xl lg:text-8xl text-[#FFD700] my-1"
-              style={{ textShadow: '0 2px 20px rgba(0,0,0,0.6)' }}
+              className="font-script text-6xl md:text-7xl lg:text-8xl text-[#FFD700] my-1 floating-heart"
+              style={{ 
+                textShadow: '0 2px 20px rgba(0,0,0,0.6)',
+                animation: 'float 3s ease-in-out infinite'
+              }}
             >
               &
             </p>
@@ -126,7 +129,15 @@ export default function Announcement() {
         <div ref={titleRef} className="mb-6">
           <div className="flex items-center justify-center gap-3 mb-3">
             <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-[#FFD700]" style={{ boxShadow: '0 0 10px rgba(255,215,0,0.5)' }} />
-            <svg className="w-6 h-6 text-[#FFD700]" viewBox="0 0 24 24" fill="currentColor" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.6))' }}>
+            <svg 
+              className="w-6 h-6 text-[#FFD700] pulsing-heart" 
+              viewBox="0 0 24 24" 
+              fill="currentColor" 
+              style={{ 
+                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.6))',
+                animation: 'pulse 2s ease-in-out infinite'
+              }}
+            >
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
             </svg>
             <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-[#FFD700]" style={{ boxShadow: '0 0 10px rgba(255,215,0,0.5)' }} />

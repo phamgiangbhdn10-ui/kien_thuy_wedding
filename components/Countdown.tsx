@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -48,22 +49,25 @@ export default function Countdown() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(sectionRef.current?.querySelectorAll('.countdown-item'),
-        { y: 60, opacity: 0, scale: 0.8 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'back.out(1.7)',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
+      const items = sectionRef.current?.querySelectorAll('.countdown-item')
+      if (items) {
+        gsap.fromTo(items,
+          { y: 60, opacity: 0, scale: 0.8 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'back.out(1.7)',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse'
+            }
           }
-        }
-      )
+        )
+      }
     }, sectionRef)
 
     return () => ctx.revert()
@@ -146,11 +150,33 @@ export default function Countdown() {
     >
       {/* Background Decorations */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
+        <motion.div 
+          className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent"
+          animate={{
+            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent"
+          animate={{
+            backgroundPosition: ['100% 50%', '0% 50%', '100% 50%']
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
         
         {/* Floating elements */}
-        <div className="gold-pattern absolute inset-0 opacity-40" />
+        <div className="gold-pattern absolute inset-0 opacity-40" style={{
+          animation: 'float 15s ease-in-out infinite'
+        }} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

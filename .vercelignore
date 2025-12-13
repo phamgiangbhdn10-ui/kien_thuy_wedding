@@ -1,0 +1,9 @@
+node_modules
+.next
+.vercel
+wedding-page
+*.log
+.DS_Store
+yarn.lock
+public/images/60x120
+

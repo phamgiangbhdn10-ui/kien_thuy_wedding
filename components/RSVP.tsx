@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -11,13 +12,8 @@ export default function RSVP() {
   const formRef = useRef<HTMLFormElement>(null)
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
-    guests: '1',
-    message: '',
-    attending: 'yes'
+    message: ''
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -40,30 +36,29 @@ export default function RSVP() {
     return () => ctx.revert()
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    // Format message for Messenger
+    const messengerMessage = formData.name 
+      ? `Xin chào! Tôi là ${formData.name}.\n\n${formData.message || 'Chúc mừng cô dâu chú rể!'}`
+      : formData.message || 'Chúc mừng cô dâu chú rể!'
     
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(messengerMessage)
     
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        name: '',
-        phone: '',
-        guests: '1',
-        message: '',
-        attending: 'yes'
-      })
-    }, 3000)
+    // Open Messenger with pre-filled message
+    const messengerUrl = `https://www.facebook.com/messages/t/7183761618419290?text=${encodedMessage}`
+    window.open(messengerUrl, '_blank')
+    
+    // Reset form
+    setFormData({
+      name: '',
+      message: ''
+    })
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -84,7 +79,7 @@ export default function RSVP() {
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="font-playfair text-3xl md:text-4xl text-navy mb-4">
-            Xác Nhận Tham Dự
+            Gửi Lời Chúc
           </h2>
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent/50" />
@@ -94,151 +89,61 @@ export default function RSVP() {
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-accent/50" />
           </div>
           <p className="font-montserrat text-sm text-navy/60 max-w-md mx-auto">
-            Vui lòng xác nhận sự tham dự của quý khách để chúng tôi chuẩn bị chu đáo nhất
+            Gửi lời chúc đến cô dâu chú rể qua Messenger
           </p>
         </div>
 
-        {/* RSVP Form */}
+        {/* Message Form */}
         <form
           ref={formRef}
           onSubmit={handleSubmit}
           className="max-w-xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-navy/10"
         >
-          {isSubmitted ? (
-            <div className="text-center py-8">
-              <div className="w-20 h-20 rounded-full bg-accent/10 mx-auto mb-4 flex items-center justify-center">
-                <svg className="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h3 className="font-playfair text-2xl text-navy mb-2">Cảm Ơn!</h3>
-              <p className="font-montserrat text-navy/60">
-                Chúng tôi đã nhận được xác nhận của bạn
-              </p>
+          <div className="space-y-6">
+            {/* Name Field */}
+            <div>
+              <label htmlFor="name" className="block font-montserrat text-sm text-navy mb-2">
+                Họ và Tên
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-navy/20 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all font-montserrat text-navy bg-white"
+                placeholder="Nhập họ tên của bạn (tùy chọn)"
+              />
             </div>
-          ) : (
-            <div className="space-y-6">
-              {/* Name Field */}
-              <div>
-                <label htmlFor="name" className="block font-montserrat text-sm text-navy mb-2">
-                  Họ và Tên <span className="text-accent">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-navy/20 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all font-montserrat text-navy bg-white"
-                  placeholder="Nhập họ tên của bạn"
-                />
-              </div>
 
-              {/* Phone Field */}
-              <div>
-                <label htmlFor="phone" className="block font-montserrat text-sm text-navy mb-2">
-                  Số Điện Thoại <span className="text-accent">*</span>
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-navy/20 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all font-montserrat text-navy bg-white"
-                  placeholder="Nhập số điện thoại"
-                />
-              </div>
-
-              {/* Attending Radio */}
-              <div>
-                <label className="block font-montserrat text-sm text-navy mb-3">
-                  Bạn sẽ tham dự? <span className="text-accent">*</span>
-                </label>
-                <div className="flex gap-4">
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="attending"
-                      value="yes"
-                      checked={formData.attending === 'yes'}
-                      onChange={handleChange}
-                      className="w-4 h-4 text-accent focus:ring-accent"
-                    />
-                    <span className="font-montserrat text-navy">Có, tôi sẽ đến</span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="attending"
-                      value="no"
-                      checked={formData.attending === 'no'}
-                      onChange={handleChange}
-                      className="w-4 h-4 text-accent focus:ring-accent"
-                    />
-                    <span className="font-montserrat text-navy">Xin lỗi, tôi không thể</span>
-                  </label>
-                </div>
-              </div>
-
-              {/* Number of Guests */}
-              {formData.attending === 'yes' && (
-                <div>
-                  <label htmlFor="guests" className="block font-montserrat text-sm text-navy mb-2">
-                    Số Người Tham Dự
-                  </label>
-                  <select
-                    id="guests"
-                    name="guests"
-                    value={formData.guests}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-navy/20 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all font-montserrat text-navy bg-white"
-                  >
-                    {[1, 2, 3, 4, 5].map(num => (
-                      <option key={num} value={num}>{num} người</option>
-                    ))}
-                  </select>
-                </div>
-              )}
-
-              {/* Message Field */}
-              <div>
-                <label htmlFor="message" className="block font-montserrat text-sm text-navy mb-2">
-                  Lời Chúc
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={3}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-navy/20 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all font-montserrat text-navy bg-white resize-none"
-                  placeholder="Gửi lời chúc đến cô dâu chú rể..."
-                />
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="glow-button w-full py-4 bg-accent text-cream font-montserrat font-medium uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
-                    Đang Gửi...
-                  </span>
-                ) : (
-                  'Gửi Xác Nhận'
-                )}
-              </button>
+            {/* Message Field */}
+            <div>
+              <label htmlFor="message" className="block font-montserrat text-sm text-navy mb-2">
+                Lời Chúc <span className="text-accent">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                required
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-navy/20 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all font-montserrat text-navy bg-white resize-none"
+                placeholder="Gửi lời chúc đến cô dâu chú rể..."
+              />
             </div>
-          )}
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="glow-button w-full py-4 bg-accent text-cream font-montserrat font-medium uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark flex items-center justify-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              Gửi Lời Chúc qua Messenger
+            </button>
+          </div>
         </form>
 
         {/* Contact Info */}
@@ -247,17 +152,17 @@ export default function RSVP() {
             Nếu có thắc mắc, vui lòng liên hệ:
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-            <a href="tel:0909000000" className="flex items-center gap-2 text-accent hover:text-accent-dark transition-colors">
+            <a href="tel:0397813774" className="flex items-center gap-2 text-accent hover:text-accent-dark transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <span className="font-montserrat">Chú Rể: 0909 000 000</span>
+              <span className="font-montserrat">Chú Rể: 0397 813 774</span>
             </a>
-            <a href="tel:0909111111" className="flex items-center gap-2 text-accent hover:text-accent-dark transition-colors">
+            <a href="tel:0965542727" className="flex items-center gap-2 text-accent hover:text-accent-dark transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <span className="font-montserrat">Cô Dâu: 0909 111 111</span>
+              <span className="font-montserrat">Cô Dâu: 0965 542 727</span>
             </a>
           </div>
         </div>

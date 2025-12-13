@@ -99,10 +99,15 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* Copyright */}
-            <p className="font-montserrat text-xs text-cream/50">
-              © {currentYear} Trung Kiên & Ngọc Thùy. Made with ♥
-            </p>
+            {/* Copyright and Credits */}
+            <div className="space-y-2">
+              <p className="font-montserrat text-xs text-cream/50">
+                © {currentYear} Trung Kiên & Ngọc Thùy. Made with ♥
+              </p>
+              <p className="font-montserrat text-xs text-cream/40">
+                Designed by <span className="text-accent">Phạm Giang</span> & <span className="text-accent">Cursor AI</span>
+              </p>
+            </div>
           </div>
         </div>
 
