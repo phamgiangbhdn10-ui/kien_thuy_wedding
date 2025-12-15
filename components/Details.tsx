@@ -311,19 +311,14 @@ export default function Details() {
                   Thời Gian
                 </p>
                 <div className="min-h-[200px] md:min-h-[240px] flex flex-col justify-center items-center relative">
-                  <motion.p
-                    className="font-playfair text-6xl md:text-7xl text-[#D4AF37] font-light mb-6 leading-none"
-                    animate={{
-                      scale: [1, 1.05, 1]
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: 'easeInOut'
-                    }}
-                  >
-                    11:00
-                  </motion.p>
+                  <div className="mb-6">
+                    <p className="font-playfair text-6xl md:text-7xl text-[#D4AF37] font-light leading-none" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em' }}>
+                      11:00
+                    </p>
+                    <p className="font-playfair text-xl md:text-2xl text-[#D4AF37]/80 font-light mt-1 italic" style={{ fontFamily: 'Playfair Display, serif' }}>
+                      A.M
+                    </p>
+                  </div>
                   <div className="h-px w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mb-6" />
                   <p className="font-script text-2xl md:text-3xl text-navy/80 mb-3">
                     Thứ Bảy

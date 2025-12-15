@@ -29,7 +29,7 @@ Chúng tôi hân hạnh mời quý khách đến dự lễ thành hôn của ch�
 
 ### ⏰ Thời Gian
 **Ngày:** 03 tháng 01 năm 2026  
-**Giờ:** 11:00
+**Giờ:** 11:00 A.M
 
 ### 📍 Địa Điểm
 **Điểm Dừng Chân Hương Nhung**  
