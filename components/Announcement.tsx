@@ -84,14 +84,14 @@ export default function Announcement() {
       className="relative min-h-screen flex items-end justify-center overflow-hidden"
     >
       {/* Background Image - No overlay on main area */}
-      <div ref={bgRef} className="absolute inset-0 -top-20">
+      <div ref={bgRef} className="absolute inset-0 md:-top-20">
         {/* Mobile: use c1.jpg */}
         <div 
           className="absolute inset-0 bg-no-repeat bg-contain md:hidden"
           style={{
             backgroundImage: 'url(/images/60x120/c1.jpg)',
             backgroundSize: 'contain',
-            backgroundPosition: 'center center',
+            backgroundPosition: 'center top',
           }}
         />
         {/* Desktop: use original image */}
