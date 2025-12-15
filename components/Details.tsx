@@ -379,7 +379,7 @@ export default function Details() {
                   <div className="h-px w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mb-6" />
                   <p className="font-montserrat text-base md:text-lg text-navy/70 leading-relaxed">
                     KM 20, QL 14 - Ấp 6<br />
-                    Xã Đồng Nai - T. Đồng Nai
+                    Xã Đồng Tâm - T. Đồng Nai
                   </p>
                 </div>
               </motion.div>
