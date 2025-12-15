@@ -191,7 +191,7 @@ export default function Announcement() {
           <div className="flex flex-col items-center gap-0">
             {/* Groom name - left aligned, rotated */}
             <p 
-              className="font-script text-3xl md:text-6xl lg:text-7xl text-white self-start ml-4 md:ml-12 -rotate-3"
+              className="font-script text-5xl md:text-8xl lg:text-9xl text-white self-start ml-4 md:ml-12 -rotate-3"
               style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8)' }}
             >
               Trung Kiên
@@ -199,7 +199,7 @@ export default function Announcement() {
             
             {/* & symbol - stylized with floating animation */}
             <motion.p 
-              className="font-script text-4xl md:text-7xl lg:text-8xl text-[#FFD700] my-1"
+              className="font-script text-6xl md:text-9xl lg:text-[10rem] text-[#FFD700] my-1"
               style={{ 
                 textShadow: '0 2px 20px rgba(0,0,0,0.6)'
               }}
@@ -219,7 +219,7 @@ export default function Announcement() {
             
             {/* Bride name - right aligned, rotated opposite */}
             <p 
-              className="font-script text-3xl md:text-6xl lg:text-7xl text-white self-end mr-4 md:mr-12 rotate-3"
+              className="font-script text-5xl md:text-8xl lg:text-9xl text-white self-end mr-4 md:mr-12 rotate-3"
               style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8)' }}
             >
               Ngọc Thùy
