@@ -21,7 +21,7 @@ Chúng tôi hân hạnh mời quý khách đến dự lễ thành hôn của ch�
 
 ### 👩 Nhà Gái
 - **Ông:** Phạm Thanh Tâm
-- **Địa chỉ:** Thôn 1 - Nghĩa Trung, T. Đồng Nai
+- **Địa chỉ:** Thôn 11 - Nghĩa Trung, T. Đồng Nai
 
 ---
 

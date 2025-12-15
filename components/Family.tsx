@@ -477,7 +477,7 @@ export default function Family() {
                 </div>
 
                 <p className="font-montserrat text-[10px] md:text-sm text-navy/50 mb-5 md:mb-8 leading-tight">
-                  Thôn 1 - Nghĩa Trung<br className="md:hidden" /> T. Đồng Nai
+                  Thôn 11 - Nghĩa Trung<br className="md:hidden" /> T. Đồng Nai
                 </p>
 
                 {/* Avatar - Above name */}
