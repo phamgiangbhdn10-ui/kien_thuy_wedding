@@ -93,7 +93,7 @@ export default function Announcement() {
             alt="Wedding background mobile"
             fill
             className="object-contain object-top"
-            quality={75}
+            quality={90}
             sizes="100vw"
             priority
           />
@@ -105,7 +105,7 @@ export default function Announcement() {
             alt="Wedding background desktop"
             fill
             className="object-cover object-center"
-            quality={80}
+            quality={90}
             sizes="100vw"
             priority
           />
