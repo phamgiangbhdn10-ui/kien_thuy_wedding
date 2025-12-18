@@ -104,9 +104,6 @@ export default function Footer() {
               <p className="font-montserrat text-xs text-cream/50">
                 © {currentYear} Trung Kiên & Ngọc Thùy. Made with ♥
               </p>
-              <p className="font-montserrat text-xs text-cream/40">
-                Designed by <span className="text-accent">Phạm Giang</span> & <span className="text-accent">Cursor AI</span>
-              </p>
             </div>
           </div>
         </div>
