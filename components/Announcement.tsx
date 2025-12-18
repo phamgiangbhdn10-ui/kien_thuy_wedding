@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Image from 'next/image'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -86,24 +87,29 @@ export default function Announcement() {
       {/* Background Image - No overlay on main area */}
       <div ref={bgRef} className="absolute inset-0 md:-top-20">
         {/* Mobile: use c1.jpg */}
-        <div 
-          className="absolute inset-0 bg-no-repeat bg-contain md:hidden"
-          style={{
-            backgroundImage: 'url(/images/60x120/c1.jpg)',
-            backgroundSize: 'contain',
-            backgroundPosition: 'center top',
-          }}
-        />
+        <div className="absolute inset-0 md:hidden">
+          <Image
+            src="/images/60x120/c1.jpg"
+            alt="Wedding background mobile"
+            fill
+            className="object-contain object-top"
+            quality={75}
+            sizes="100vw"
+            priority
+          />
+        </div>
         {/* Desktop: use original image */}
-        <div 
-          className="hidden md:block absolute inset-0 bg-no-repeat bg-contain"
-          style={{
-            backgroundImage: 'url(/images/15x21/DSC01337.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-            transformOrigin: 'center center',
-          }}
-        />
+        <div className="hidden md:block absolute inset-0">
+          <Image
+            src="/images/15x21/DSC01337.jpg"
+            alt="Wedding background desktop"
+            fill
+            className="object-cover object-center"
+            quality={80}
+            sizes="100vw"
+            priority
+          />
+        </div>
       </div>
 
       {/* Gradient overlay at bottom only - for text readability */}

@@ -24,32 +24,7 @@ export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null)
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
 
-  // Lazy load gallery images only when section is visible
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Load images progressively when section is visible
-            galleryImages.forEach((image, index) => {
-              setTimeout(() => {
-                const img = new window.Image()
-                img.src = image.src
-              }, index * 100) // Stagger loading
-            })
-            observer.disconnect()
-          }
-        })
-      },
-      { rootMargin: '200px' } // Start loading 200px before visible
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  // Removed manual preloading - Next.js Image component handles this automatically with better optimization
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -199,7 +174,7 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
                   loading="lazy"
-                  quality={85}
+                  quality={75}
                 />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
@@ -232,6 +207,7 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
                   loading="lazy"
+                  quality={75}
                 />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
@@ -268,6 +244,7 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
                   loading="lazy"
+                  quality={75}
                 />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
@@ -300,6 +277,7 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
                   loading="lazy"
+                  quality={75}
                 />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
@@ -336,6 +314,7 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
                   loading="lazy"
+                  quality={75}
                 />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
@@ -368,6 +347,7 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
                   loading="lazy"
+                  quality={75}
                 />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
@@ -404,6 +384,7 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
                   loading="lazy"
+                  quality={75}
                 />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
@@ -436,6 +417,7 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
                   loading="lazy"
+                  quality={75}
                 />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"
@@ -524,8 +506,8 @@ export default function Gallery() {
               alt={galleryImages[selectedImageIndex].alt}
               fill
               className="object-contain"
-              sizes="100vw"
-              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+              quality={85}
             />
           </motion.div>
         </motion.div>
